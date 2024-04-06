@@ -1,0 +1,233 @@
+{
+    "Сидоров Сидор ": {
+        "phones": [
+            "322-223-322-233"
+        ],
+        "emails": [
+            ""
+        ],
+        "birthday": "",
+        "additional_info": "Сидоров сын"
+    },
+    "Сидорова, Мария Семёновна": {
+        "phones": [
+            "444-44-44",
+            "555-55-55"
+        ],
+        "emails": [
+            "maria@example.com"
+        ],
+        "birthday": "03.08.1988",
+        "additional_info": "Финансовый аналитик"
+    },
+    "Николаев, Пётр": {
+        "phones": [
+            "666-66-66"
+        ],
+        "emails": [
+            "petr@example.com"
+        ],
+        "birthday": "04.10.1992",
+        "additional_info": "Маркетолог"
+    },
+    "Козлова, Елена Викторовна": {
+        "phones": [
+            "777-77-77",
+            "888-88-88"
+        ],
+        "emails": [
+            "elena@example.com"
+        ],
+        "birthday": "25.11.1987",
+        "additional_info": "Дизайнер"
+    },
+    "Васильев, Алексей Григорьевич": {
+        "phones": [
+            "999-99-99"
+        ],
+        "emails": [
+            "alex@example.com"
+        ],
+        "birthday": "18.03.1989",
+        "additional_info": "Программист"
+    },
+    "Морозова, Ольга": {
+        "phones": [
+            "101-01-01"
+        ],
+        "emails": [
+            "olga@example.com"
+        ],
+        "birthday": "30.06.1994",
+        "additional_info": "HR-специалист"
+    },
+    "Игнатьев, Сергей Васильевич": {
+        "phones": [
+            "121-21-21",
+            "131-31-31"
+        ],
+        "emails": [
+            "sergey@example.com"
+        ],
+        "birthday": "14.02.1990",
+        "additional_info": "Архитектор"
+    },
+    "Смирнова, Татьяна Васильевна": {
+        "phones": [
+            "141-41-41"
+        ],
+        "emails": [
+            "tanya@example.com"
+        ],
+        "birthday": "22.07.1990",
+        "additional_info": "Бухгалтер"
+    },
+    "Фёдоров, Артём": {
+        "phones": [
+            "151-51-51"
+        ],
+        "emails": [
+            "artem@example.com"
+        ],
+        "birthday": "05.10.1979",
+        "additional_info": "Продажи"
+    },
+    "Фетисов, Феофан Дормидонтович ": {
+        "phones": [
+            "701-801-01",
+            "33-12-23 (доб. - 02)",
+            "",
+            ""
+        ],
+        "emails": [
+            "feodor@mail.ru",
+            "",
+            ""
+        ],
+        "birthday": "01.02.2003",
+        "additional_info": "Парниша"
+    },
+    "Смолин, Максим Максимовыч": {
+        "phones": [
+            "223-332,17-16-802",
+            "",
+            "",
+            ""
+        ],
+        "emails": [
+            "нет",
+            "",
+            ""
+        ],
+        "birthday": "04.12.1988",
+        "additional_info": "нет"
+    },
+    "Иванова Анна Матвеевна": {
+        "phones": [
+            "111-11-11",
+            "222-22-22"
+        ],
+        "emails": [
+            "anna@example.com"
+        ],
+        "birthday": "15.05.1999",
+        "additional_info": "Старший менеджер"
+    },
+    "Петров Иван Иванович": {
+        "phones": [
+            "333-33-33"
+        ],
+        "emails": [
+            "ivan@example.com",
+            "ivan.petrov@gmail.com"
+        ],
+        "birthday": "20.12.1985",
+        "additional_info": "Главный инженер"
+    },
+    "Василий  ": {
+        "phones": [
+            "22-22-22",
+            "",
+            "",
+            ""
+        ],
+        "emails": [
+            "3213213@mail.ru",
+            "",
+            ""
+        ],
+        "birthday": "05.05.1996",
+        "additional_info": "First"
+    },
+    "Иванов Петя Петрович": {
+        "phones": [
+            "55-66-77",
+            "89997776665",
+            "",
+            ""
+        ],
+        "emails": [
+            "123@gmail.com",
+            "",
+            ""
+        ],
+        "birthday": "22.12.2000",
+        "additional_info": "Просто товарищ"
+    },
+    "Васильев Исаак ": {
+        "phones": [
+            ""
+        ],
+        "emails": [
+            ""
+        ],
+        "birthday": "",
+        "additional_info": ""
+    },
+    "Егоров Егор Егорович": {
+        "phones": [
+            "+9-999-999-99-99"
+        ],
+        "emails": [
+            "egor__python@mail.ru"
+        ],
+        "birthday": "17.09.1878",
+        "additional_info": "Программист"
+    },
+    "Хрюнов Вася Петрович": {
+        "phones": [
+            "12-13-14",
+            "15-16-17",
+            "",
+            "",
+            ""
+        ],
+        "emails": [
+            "sadfafadf@xcvbsdhbdg.weryy",
+            "",
+            ""
+        ],
+        "birthday": "01.02.1888",
+        "additional_info": "нет"
+    },
+    "~Сидоров Сидор ": {
+        "phones": [
+            ""
+        ],
+        "emails": [
+            ""
+        ],
+        "birthday": "",
+        "additional_info": "Ещё один Сидоров"
+    },
+    "Гейтсин Билли ": {
+        "phones": [
+            ""
+        ],
+        "emails": [
+            ""
+        ],
+        "birthday": "",
+        "additional_info": "Начинающий программист"
+    }
+}
