@@ -4,6 +4,7 @@ import easygui
 CONTACTS_FILE = "contacts.json"
 
 def load_contacts():
+    """ Загрузка контактов из файла """
     try:
         with open(CONTACTS_FILE, 'r', encoding="utf-8") as file:
             return json.load(file)
@@ -12,11 +13,13 @@ def load_contacts():
 
 
 def save_contacts(contacts):
+    """ Запись контакта в файл """
     with open(CONTACTS_FILE, 'w', encoding="utf-8") as file:
         json.dump(contacts, file, indent=4, ensure_ascii=False)
 
 
 def display_contact_info(name, contact):
+    """ Вывод информации об одиночном контакте """
     message = f"Имя: {name}\n"
     
     phones = contact.get('phones', [])
@@ -33,71 +36,14 @@ def display_contact_info(name, contact):
     easygui.codebox("Информация о контакте", "Контакт", message)
 
 
-# def delete_contact(contacts):
-#     query = easygui.enterbox("Введите поисковый запрос:")
-#     if not query:  # Проверяем, что пользователь ввел запрос
-#         easygui.msgbox("Поисковый запрос не может быть пустым.")
-#         return
-    
-#     results = find_contacts(contacts, query)
-
-#     if results:
-
-#         # Пользователь выбирает контакт для удаления
-#         choice = easygui.choicebox("Выберите контакт для удаления:", "Результаты поиска", [name for name, _ in results])
-#         if choice:
-#             # Получаем выбранный контакт
-#             selected_contact = next((contact for name, contact in results if name == choice), None)
-#             if selected_contact:
-#                 # Выводим всю информацию о контакте
-#                 display_contact_info(choice, selected_contact)
-#                 # Запрашиваем подтверждение удаления
-#                 if easygui.ynbox("Вы уверены, что хотите удалить этот контакт?", "Подтверждение удаления"):
-#                     del contacts[choice]  # Удаляем контакт из словаря
-#                     save_contacts(contacts)  # Сохраняем обновленный список контактов
-#                     easygui.msgbox("Контакт успешно удалён.")
-#             else:
-#                 easygui.msgbox("Контакт не найден.")
-#     else:
-#         easygui.msgbox("Контакт не найден.")
-
-
-# def edit_contact(contacts):
-#     query = easygui.enterbox("Введите поисковый запрос:")
-#     if not query:  # Проверяем, что пользователь ввел запрос
-#         easygui.msgbox("Поисковый запрос не может быть пустым.")
-#         return
-    
-#     results = find_contacts(contacts, query)
-
-#     if results:
-#         choices = []
-#         for idx, (name, contact) in enumerate(results):
-#             contact_info = f"{name}, Телефоны: {', '.join(contact.get('phones', ['Нет']))}, Emails: {', '.join(contact.get('emails', ['Нет']))}, День рождения: {contact.get('birthday', 'Не указан')}, Доп. информация: {contact.get('additional_info', 'Отсутствует')}"
-#             choices.append(contact_info)
-
-#         choice = easygui.choicebox("Выберите контакт для редактирования:", "Результаты поиска", choices=choices)
-#         if choice:
-#             selected_idx = choices.index(choice)
-#             selected_name, selected_contact = results[selected_idx]
-#             create_new_or_edit_selected_contact(selected_name, selected_contact, contacts)
-#     else:
-#         easygui.msgbox("Контакт не найден.")
-
-
 def search_contact(contacts, edit = False, delete = False):
+    """ Поиск и вывод на экран найденных контактов, выбор действий """
     query = easygui.enterbox("Введите поисковый запрос:")
     if not query:  # Проверяем, что пользователь ввел запрос
         easygui.msgbox("Поисковый запрос не может быть пустым.")
         return
-    
     results = find_contacts(contacts, query)
-
     if results:
-        # choices = [f"{name}" for name, _ in results]
-        # # # choices = [f"{results[i][0]}: {results[i][1]}" for i in range(len(results))]  
-        # # choices = [f"{name}: {contact}" for name, contact in results]       
-
         choices = []
         for name, contact in results:
             contact_info = f"{name} (телефоны: {', '.join(contact.get('phones', ['Нет']))}, " \
@@ -105,22 +51,14 @@ def search_contact(contacts, edit = False, delete = False):
                         f"день рождения: {contact.get('birthday', 'Не указан')}, " \
                         f"доп. информация: {contact.get('additional_info', 'Отсутствует')})"
             choices.append(contact_info)        
-
         if len(choices) > 1:
-            choice = easygui.choicebox(edit * "Выберите контакт для редактирования:", "Результаты поиска", choices=choices)
-        elif len(choices) == 1:
-            display_contact_info(results[0][0], results[0][1])  #(edit * "Выберите контакт для редактирования:", "Результаты поиска", choices=choices)
-            choice = choices[0]
-    #     if choice:
-    #         if not edit: return
-    #         selected_contact = next((contact for name, contact in results if name == choice), None)
-    #         if selected_contact:
-    #             create_new_or_edit_selected_contact(contacts, choice, selected_contact)
-    #         else:
-    #             easygui.msgbox("Контакт не найден.")
-    # else:
-    #     easygui.msgbox("Контакт не найден.")
-
+            choice = easygui.choicebox(edit * "Выберите контакт для редактирования:" +
+                                       delete * "Выберите контакт для удаления:",
+                                       "Результаты поиска",
+                                       choices=choices)
+        elif len(choices) == 1: # Если найдено более одного контакта
+            display_contact_info(results[0][0], results[0][1])
+            choice = choices[0] # Если найден единственный контакт
         if choice:
             selected_contact_info = next((info for info in choices if choice in info), None)
             if selected_contact_info:
@@ -129,30 +67,25 @@ def search_contact(contacts, edit = False, delete = False):
                 # Получаем выбранный контакт из словаря
                 selected_contact = next((contact for name, contact in results if name == selected_name), None)
                 if selected_contact:
-
-
                     if delete:
                         if easygui.ynbox("Вы уверены, что хотите удалить этот контакт?", "Подтверждение удаления", choices=("[<F1>]Да", "[<F2>]Нет"), image=None, default_choice='[<F2>]Нет', cancel_choice='[<F1>]Да'):
-                            del contacts[selected_name] #[choice]  # Удаляем контакт из словаря
-                            save_contacts(contacts)  # Сохраняем обновленный список контактов
-                            easygui.msgbox("Контакт успешно удалён.") 
+                            del contacts[selected_name] # Удаляем контакт из словаря
+                            save_contacts(contacts)     # Сохраняем обновленный список контактов
+                            easygui.msgbox(f"Контакт {selected_name} успешно удалён.") 
+                        else:
+                            easygui.msgbox(f"Удаление контакта {selected_name} отменено пользователем.")
                     else:                   
-
                         create_new_or_edit_selected_contact(contacts, selected_name, selected_contact)
-
-
-
-
                 else:
                     easygui.msgbox("Контакт не найден.")
         else:
-            easygui.msgbox("Выбранный контакт не найден.")
+            easygui.msgbox("Действие отменено пользователем.")
     else:
         easygui.msgbox("Контакт не найден.")
 
 
-
 def find_contacts(contacts, query):
+    """ Поиск контакта по ключу и всем полям, включая частичные совпадения """    
     results = []
     for name, contact in contacts.items():
         if query.lower() in name.lower():  # Поиск по имени
@@ -169,20 +102,17 @@ def find_contacts(contacts, query):
 
 
 def create_new_or_edit_selected_contact(contacts, selected_name="", selected_contact=None):
+    """ Создание, редактирование контакта """
     if selected_contact is None:
         selected_contact = {}  # Создаем новый контакт, если он не указан
     if contacts is None:
         contacts = {}  # Создаем новый словарь контактов, если он не указан
-
-    # Извлекаем данные выбранного контакта
-    contact = selected_contact.copy()
-
+    contact = selected_contact.copy() # Извлекаем данные выбранного контакта
     # Разбиваем строку имени контакта по запятой и пробелу
     name_parts = selected_name.split(" ")
     last_name = name_parts[0] if len(name_parts) >= 1 else ""
     first_name = name_parts[1] if len(name_parts) >= 2 else ""
     middle_name = name_parts[2] if len(name_parts) >= 3 else ""
-
     # Вводим данные для редактирования
     field_values = [
         last_name,
@@ -194,16 +124,13 @@ def create_new_or_edit_selected_contact(contacts, selected_name="", selected_con
         contact.get('additional_info', '')  # Доп. информация
     ]
     field_names = ["Фамилия", "Имя", "Отчество", "Телефоны", "Emails", "День рождения", "Доп. информация"]
-
     new_values = easygui.multenterbox("Редактирование контакта", "Редактировать контакт", field_names, field_values)
-
     if new_values:
         # Обновляем данные контакта
         last_name, first_name, middle_name, phones, emails, birthday, additional_info = new_values
         new_name = f"{last_name} {first_name} {middle_name}"
         new_phones = [phone.strip() for phone in phones.split(',')]
         new_emails = [email.strip() for email in emails.split(',')]
-
         contact.update(
                         {
                         "phones": new_phones,
@@ -212,7 +139,6 @@ def create_new_or_edit_selected_contact(contacts, selected_name="", selected_con
                         "additional_info": additional_info
                         }
                       )
-
         if new_name != selected_name:
             if selected_name != "":
                 del contacts[selected_name]  # Удаляем старый ключ
@@ -220,18 +146,18 @@ def create_new_or_edit_selected_contact(contacts, selected_name="", selected_con
 
         while True:
             if selected_name in contacts:
-                if easygui.ynbox("Контакт с таким именем существует! Презаписать существующий контакт?\nПри нажатии 'Нет' будет создан новый контакт.", "Внимание!", choices=("[<F1>]Да", "[<F2>]Нет"), image=None, default_choice='[<F2>]Нет', cancel_choice='[<F1>]Да') == "Да":
+                if easygui.ynbox("Контакт с таким именем существует! Презаписать существующий контакт?\nПри нажатии 'Нет' будет создан новый контакт.", "Внимание!", choices=("[<F1>]Да", "[<F2>]Нет"), image=None, default_choice='[<F2>]Нет', cancel_choice='[<F1>]Да'):
                     contacts[selected_name] = contact # Обновляем данные контакта
                     break
                 else:
-                    selected_name = "~" + selected_name
+                    selected_name = "~" + selected_name # Добавляем тильду перед фамилией. Это значит,
+                                                        # что контакт с такими же ФИО уже есть в телефонной книге
+                                                        # (полный тёзка)
             else:
                 contacts[selected_name] = contact # Создаём контакт с видоизменённым именем
                 break
-
         # Сохраняем обновленные данные
         save_contacts(contacts)
-
         easygui.msgbox("Контакт успешно обновлён или добавлен.")
     else:
         if selected_name == "":
@@ -241,11 +167,12 @@ def create_new_or_edit_selected_contact(contacts, selected_name="", selected_con
 
 
 def view_all_contacts(contacts):
+    """ Просмотр всех контактов """
     counter = 1
     message = f"Всего контактов: {len(contacts)}\n\n"
     for name, contact in contacts.items():
         message += f"{counter}. {name}\n"
-        
+       
         phones = contact.get('phones', [])  # Получаем список номеров телефонов или пустой список, если ключ отсутствует
         phones_str = ', '.join(phones) if phones else "Нет телефонов"
         
