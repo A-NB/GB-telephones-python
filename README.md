@@ -13,22 +13,22 @@
 
 Ниже представлено несколько скриншотов.
 1. Главное окно программы:
-<div style="text-align: center;"><image src="/src/Главное окно.jpg" alt="Главное окно программы"></div>
+<p align="center"><image src="/src/Главное окно.jpg" alt="Главное окно программы"></p>
 
 2. Список всех контактов:
-<div style="text-align: center;"><image src="/src/Список всех контактов.jpg" alt="Список всех контактов"></div>
+<p align="center"><image src="/src/Список всех контактов.jpg" alt="Список всех контактов"></p>
 
 3. Окно поиска:
-<div style="text-align: center;"><image src="/src/Окно поиска.jpg" alt="Окно поиска"></div>
+<p align="center"><image src="/src/Окно поиска.jpg" alt="Окно поиска"></p>
 
 4. Результаты поиска:
-<div style="text-align: center;"><image src="/src/Результаты поиска.jpg" alt="Результаты поиска"></div>
+<p align="center"><image src="/src/Результаты поиска.jpg" alt="Результаты поиска"></p>
 
 5. Редактирование (создание нового) контакта:
-<div style="text-align: center;"><image src="/src/Редактирование (создание нового) контакта.jpg" alt="Редактирование (создание нового) контакта"></div>
+<p align="center"><image src="/src/Редактирование (создание нового) контакта.jpg" alt="Редактирование (создание нового) контакта"></p>
 
 6. Редактирование (изменение) контакта:
-<div style="text-align: center;"><image src="/src/Редактирование (изменение) контакта.jpg" alt="Редактирование (изменение) контакта"></div>
+<p align="center"><image src="/src/Редактирование (изменение) контакта.jpg" alt="Редактирование (изменение) контакта"></p>
 
 7. Предупреждение:
-<div style="text-align: center;"><image src="/src/Предупреждение.jpg" alt="Предупреждение"></div>
+<p align="center"><image src="/src/Предупреждение.jpg" alt="Предупреждение"></p>
