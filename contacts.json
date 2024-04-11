@@ -239,5 +239,16 @@
         ],
         "birthday": "12.02.1952",
         "additional_info": "юнец"
+    },
+    "~Петров Иван Иванович": {
+        "phones": [
+            "333-33-33"
+        ],
+        "emails": [
+            "ivan@example.com",
+            "ivan.petrov@gmail.com"
+        ],
+        "birthday": "20.12.1985",
+        "additional_info": "Главный инженер"
     }
 }
